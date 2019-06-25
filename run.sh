@@ -29,7 +29,7 @@ then
   kaggle datasets download "$DATASET" -f "$DATASET_FILENAME"
 fi
 
-if [ ! -d "$DATA" ]
+if [ ! -d "$DATASET_DIRECTORY" ]
 then
   echo 'Rozpakowuję zbiór danych...'
   unzip "$DATASET_FILENAME" -d "$DATASET_DIRECTORY" > /dev/null
