@@ -20,13 +20,20 @@ then
   ipython kernel install --sys-prefix --name=venv > /dev/null
 fi
 
-DATASET_URL="https://data.seattle.gov/api/views/tw7j-dfaw/rows.csv?accessType=DOWNLOAD"
-DATASET_FILENAME="seattle-cycle-share.csv"
+DATASET="iabhishekofficial/mobile-price-classification"
+DATASET_FILENAME="mobile-price-classification.zip"
+DATASET_DIRECTORY="data"
 if [ ! -f "$DATASET_FILENAME" ]
 then
-  echo 'Pobieram zbiór danych (44,8 MB)...'
-  wget -q -O $DATASET_FILENAME $DATASET_URL
+  echo 'Pobieram zbiór danych...'
+  kaggle datasets download "$DATASET" -f "$DATASET_FILENAME"
+fi
+
+if [ ! -d "$DATA" ]
+then
+  echo 'Rozpakowuję zbiór danych...'
+  unzip "$DATASET_FILENAME" -d "$DATASET_DIRECTORY" > /dev/null
 fi
 
 echo 'Uruchamiam notebook...'
-jupyter notebook seattle-cycle-share.ipynb
+jupyter notebook project.ipynb
