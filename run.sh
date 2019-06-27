@@ -38,4 +38,4 @@ then
 fi
 
 echo 'Uruchamiam notebook...'
-jupyter notebook project.ipynb
+jupyter notebook 127205.ipynb
