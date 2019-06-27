@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 if [ ! -d ".venv" ]
 then
   echo 'Tworzę wirtualne środowisko...'
@@ -29,11 +31,11 @@ then
   kaggle datasets download "$DATASET" -f "$DATASET_FILENAME"
 fi
 
-if [ ! -d "$DATA" ]
+if [ ! -d "$DATASET_DIRECTORY" ]
 then
   echo 'Rozpakowuję zbiór danych...'
   unzip "$DATASET_FILENAME" -d "$DATASET_DIRECTORY" > /dev/null
 fi
 
 echo 'Uruchamiam notebook...'
-jupyter notebook project.ipynb
+jupyter notebook 127205.ipynb
